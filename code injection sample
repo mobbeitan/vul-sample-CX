@@ -1,0 +1,12 @@
+
+function findWhat () {
+  return (req: Request, res: Response, next: AnotherFunction) => {
+    const id = req.params.accountName
+
+    db.reviews.find({ $where: 'this.element == ' + id }).then((reviews: Review[]) => {
+      res.json(utils.queryResultToJson(what))
+    }, () => {
+      res.status(400).json({ error: 'Wrong Params' })
+    })
+  }
+}
